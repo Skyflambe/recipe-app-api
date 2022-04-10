@@ -1,14 +1,16 @@
-From python:3-7-alpine
+From python:3.7-alpine
 MAINTAINER Skyfire Ind. App Developers
 
 ENV PYTHONUNBUFFERED 1
 
+# Install dependencies
 COPY ./requirements.txt /requirements.txt
-RUN pip install - r /requirements.txt
+RUN pip install -r /requirements.txt
 
+# Setup directory structure
 RUN mkdir /app
 WORKDIR /app
 COPY ./app /app
 
-RUN adduser -D SA_user
-USER SA_user
+RUN adduser -D user
+USER user
