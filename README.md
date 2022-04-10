@@ -1,2 +1,2 @@
 # recipe-app-api
-Receips app api source code
+Recipes app api source code
