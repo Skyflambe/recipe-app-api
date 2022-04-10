@@ -5,6 +5,7 @@ ENV PYTHONUNBUFFERED 1
 
 # Install dependencies
 COPY ./requirements.txt /requirements.txt
+RUN pip install python-decouple
 RUN pip install -r /requirements.txt
 
 # Setup directory structure
