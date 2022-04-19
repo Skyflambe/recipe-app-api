@@ -9,4 +9,25 @@ services:
     volumes:
       - ./app:/app
     command: >
-      sh -c "python manage.py runserver 0.0.0.0:8000" 
+      sh -c "python manage.py wait_for_db &&
+             python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
+    env_file:
+      - .env # this is my environment file with all DB, User, PWord in it
+    depends_on:
+      - db
+# APP details in .env
+# DB_HOST=
+# DB_NAME=
+# DB_USER=
+# DB_PASS=
+
+
+  db:
+    image: postgres:10-alpine
+    env_file:
+      - .env # this is my environment file with all DB, User, PWord in it
+# DB Details in .env
+# POSTGRES_DB=
+# POSTGRES_USER=
+# POSTGRES_PASSWORD=
